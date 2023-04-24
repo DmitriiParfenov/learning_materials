@@ -8,6 +8,14 @@ def stack_example():
     return Stack()
 
 
+@pytest.fixture
+def get_list_from_stack(stack_example):
+    stack_example.push(5)
+    stack_example.push(6)
+    list_stack = str(stack_example).split('\n')
+    return list_stack
+
+
 def test_stack_empty_stack(stack_example):
     assert stack_example.head is None
 
@@ -44,3 +52,9 @@ def test_stack_pop(stack_example):
     for i in range(2):
         result.append(stack_example.pop())
     assert result == [6, 5]
+
+
+@pytest.mark.parametrize('index_outer, index_inner, expected', [(0, 7, '6'),
+                                                                (1, 7, '5')])
+def test_stack__str__(get_list_from_stack, index_outer, index_inner, expected):
+    assert get_list_from_stack[index_outer][index_inner] == expected
