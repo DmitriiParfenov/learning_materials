@@ -2,6 +2,7 @@ class Node:
     """
     Класс для хранения информации об элементе и о ссылке на хранение следующего элемента
     """
+
     def __init__(self, data, next_node=None):
         self.data = data
         self.next_node = next_node
@@ -19,10 +20,13 @@ class Queue:
         :param item: object
         """
         self._size += 1
+        node = Node(item)
         if not self.rear:
-            self.front = self.rear = Node(item)
+            self.front = node
+            self.rear = node
         else:
-            self.rear.next_node = self.rear = Node(item)
+            self.rear.next_node = node
+            self.rear = node
 
     def dequeue(self):
         """
@@ -45,6 +49,7 @@ class Queue:
         return self._size
 
     def __str__(self):
+        """Возвращает строку с элементами и ссылками на следующий элемент, хранящимися в очереди"""
         res = ''
         node = self.front
         while node:
