@@ -1,7 +1,6 @@
 import pytest
 
 from data_structures.linked_list import LinkedList
-from data_structures.linked_list import Node
 
 
 @pytest.fixture
@@ -72,9 +71,3 @@ def test_linked_list_str(linked_list_example):
     for elem in data:
         result.append(elem[:8])
     assert result == ['Узел = 2', 'Узел = 4', 'Узел = 6']
-
-
-
-
-
-
