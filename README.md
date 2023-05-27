@@ -40,7 +40,7 @@ poetry install
 Для Linux: </br>
 ```
 git clone git@github.com:DmitriiParfenov/learning_materials.git
-cd parser_vacancies
+cd learning_materials
 python3 -m venv venv
 source venv/bin/activate
 curl -sSL https://install.python-poetry.org | python3
