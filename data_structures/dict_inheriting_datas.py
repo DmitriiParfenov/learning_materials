@@ -11,8 +11,8 @@ def get_dict_inhere(structure, parent, child):
     if parent not in structure:
         structure[parent] = []
         structure[parent].extend(child)
-        for elem in structure[parent]:
-            if elem in structure:
-                structure[parent].extend(structure[elem])
-        structure[parent] = set(structure[parent])
+    for elem in structure[parent]:
+        if elem in structure:
+            structure[parent].extend(structure[elem])
+    structure[parent] = set(structure[parent])
     return structure
