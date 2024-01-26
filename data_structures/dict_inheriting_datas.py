@@ -15,4 +15,4 @@ def get_dict_inhere(structure, parent, child):
             if elem in structure:
                 structure[parent].extend(structure[elem])
         structure[parent] = set(structure[parent])
-        return structure
+    return structure
