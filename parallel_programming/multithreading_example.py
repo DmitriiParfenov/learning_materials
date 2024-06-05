@@ -1,7 +1,9 @@
-import requests
+import os
 import time
 from queue import Queue, Empty
 from threading import Thread
+from dotenv import load_dotenv
+import requests
 
 from parallel_programming.token_bucket import Throttle
 
@@ -9,6 +11,8 @@ THREAD_POOL_SIZE = 4
 SYMBOLS = ('USD', 'EUR', 'PLN', 'NOK', 'CZK')
 BASES = ('USD', 'EUR', 'PLN', 'NOK', 'CZK')
 throttle = Throttle(10)
+dot_env = os.path.join('..', '.env')
+load_dotenv(dotenv_path=dot_env)
 
 
 def fetch_rates(base):
@@ -18,7 +22,7 @@ def fetch_rates(base):
     url = f"https://api.apilayer.com/exchangerates_data/latest?base={base}"
     payload = {}
     headers = {
-        "apikey": "wOPYR2f5u1jMYugxyvSrSlpRUsF0HpSb"
+        "apikey": os.getenv('API_KEY')
     }
     response = requests.request("GET", url, headers=headers, data=payload)
     response.raise_for_status()
