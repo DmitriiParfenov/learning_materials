@@ -10,6 +10,7 @@ packages = [{include = "learning_information"}]
 python = "^3.10"
 requests = "^2.31.0"
 aiohttp = "^3.9.3"
+python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
