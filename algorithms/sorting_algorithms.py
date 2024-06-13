@@ -65,6 +65,6 @@ def merge_sort(arr):
         return arr
     else:
         mid = len(arr) // 2
-        left = quick_sort(arr[:mid])
-        right = quick_sort(arr[mid:])
+        left = merge_sort(arr[:mid])
+        right = merge_sort(arr[mid:])
         return union(left, right)
