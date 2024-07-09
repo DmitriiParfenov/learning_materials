@@ -5,7 +5,7 @@ from threading import Thread
 from dotenv import load_dotenv
 import requests
 
-from parallel_programming.token_bucket import Throttle
+from concurrent_computing.token_bucket import Throttle
 
 THREAD_POOL_SIZE = 4
 SYMBOLS = ('USD', 'EUR', 'PLN', 'NOK', 'CZK')
