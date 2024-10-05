@@ -3,13 +3,15 @@ from collections import deque
 
 def breadth_first_search(graph, start, target):
     """
-    Функция реазилует алгоритм "Поиск в ширину", который позволяет обходить все элементы графа и найти
-    путь с минимальным количество сегментов
+    Функция реализует алгоритм "Поиск в ширину", который позволяет обходить все элементы графа и определить, наследуется
+    ли узел start от узла target. Обход графа совершается поуровнево.
     :param graph: dict
     :param start: hashable object
     :param target: object
     :return: bool
     """
+    if start not in graph:
+        return False
     queue_func = deque()
     queue_func += graph[start]
     used = []
