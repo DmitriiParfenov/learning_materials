@@ -5,13 +5,13 @@ from threading import Thread
 from dotenv import load_dotenv
 import requests
 
-from concurrent_computing.token_bucket import Throttle
+from concurrent_computing.threading.token_bucket import Throttle
 
 THREAD_POOL_SIZE = 4
 SYMBOLS = ('USD', 'EUR', 'PLN', 'NOK', 'CZK')
 BASES = ('USD', 'EUR', 'PLN', 'NOK', 'CZK')
 throttle = Throttle(10)
-dot_env = os.path.join('..', '.env')
+dot_env = os.path.join('../..', '.env')
 load_dotenv(dotenv_path=dot_env)
 
 

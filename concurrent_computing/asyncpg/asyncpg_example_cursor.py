@@ -4,7 +4,7 @@ import os
 import asyncpg
 from dotenv import load_dotenv
 
-dot_env = os.path.join('..', '.env')
+dot_env = os.path.join('../..', '.env')
 load_dotenv(dotenv_path=dot_env)
 
 

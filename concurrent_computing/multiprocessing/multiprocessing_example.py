@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 SYMBOLS = ('USD', 'EUR', 'PLN', 'NOK', 'CZK')
 BASES = ('USD', 'EUR', 'PLN', 'NOK', 'CZK')
 POOL_SIZE = 4
-dot_env = os.path.join('..', '.env')
+dot_env = os.path.join('../..', '.env')
 load_dotenv(dotenv_path=dot_env)
 
 
