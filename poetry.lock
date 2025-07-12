@@ -979,6 +979,30 @@ python-dateutil = ">=2.7"
 dev = ["meson-python (>=0.13.1,<0.17.0)", "pybind11 (>=2.13.2,!=2.13.3)", "setuptools (>=64)", "setuptools_scm (>=7)"]
 
 [[package]]
+name = "mlxtend"
+version = "0.23.4"
+description = "Machine Learning Library Extensions"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "mlxtend-0.23.4-py3-none-any.whl", hash = "sha256:8675456e2b71841116e5317f6d7aa568848ea2546865eb5eca7192e9b7f395f4"},
+    {file = "mlxtend-0.23.4.tar.gz", hash = "sha256:ba8c8427cbe65d462c8487511331cae0cdcf9252d92f8687f0a53d311128770f"},
+]
+
+[package.dependencies]
+joblib = ">=0.13.2"
+matplotlib = ">=3.0.0"
+numpy = ">=1.16.2"
+pandas = ">=0.24.2"
+scikit-learn = ">=1.3.1"
+scipy = ">=1.2.1"
+
+[package.extras]
+docs = ["mkdocs", "mkdocs-bootswatch", "nbconvert", "python-markdown-math"]
+testing = ["pytest"]
+
+[[package]]
 name = "multidict"
 version = "6.0.5"
 description = "multidict implementation"
@@ -2133,4 +2157,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "b178d830643a5414c5811b7c6f3d9bf0f1e35330ac7458c6e31ac4e86031fb0e"
+content-hash = "5ae87d7cd647946d7d0a551721b233e92b0866849ba65aa38e84a62152c62057"
