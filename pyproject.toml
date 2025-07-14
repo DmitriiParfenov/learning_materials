@@ -24,6 +24,7 @@ scikit-learn = "^1.6.1"
 beautifulsoup4 = "^4.13.4"
 nltk = "^3.9.1"
 mlxtend = "^0.23.4"
+statsmodels = "^0.14.5"
 
 
 [tool.poetry.group.dev.dependencies]
