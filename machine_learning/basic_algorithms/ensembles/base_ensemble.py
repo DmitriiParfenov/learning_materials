@@ -31,7 +31,7 @@ class MajorityVoteClassifier(ClassifierMixin, BaseEstimator):
         """
         Метод обучает каждый классификатор из self.classifiers. Если в y находятся метки, отличные от 0, 1 и тп, то
         метод преобразует эти метки в 0, 1 и тп. Все обученные классификаторы будут клонированы и сохранены в переменной
-        self._transformed_classifiers.
+        self._fitted_classifiers.
         """
         if self.vote not in ['classlabel', 'probability']:
             raise ValueError("Vote must be 'probability' or 'classlabel'")
