@@ -29,6 +29,7 @@ opencv-python = "^4.12.0.88"
 torch = {version = "^2.5.1", source = "torch-cu121"}
 torchvision = {version = "^0.20.1", source = "torch-cu121"}
 torchaudio = {version = "^2.5.1", source = "torch-cu121"}
+gdown = "^5.2.0"
 
 
 [tool.poetry.group.dev.dependencies]
