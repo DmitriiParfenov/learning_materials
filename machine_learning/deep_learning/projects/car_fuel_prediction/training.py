@@ -28,7 +28,7 @@ def train(learning_rate: float = 0.001, epochs: int = 200, batch_size: int = 8):
     torch.manual_seed(1)
     for epoch in range(epochs):
         for x_mini, y_mini in dataloader:
-            y_pred = model(x_mini).squeeze()
+            y_pred = model(x_mini)[:, 0]
             loss = loss_fn(y_pred, y_mini)
             loss.backward()
             optimizer.step()
@@ -38,7 +38,7 @@ def train(learning_rate: float = 0.001, epochs: int = 200, batch_size: int = 8):
 
     # Тестирование.
     with torch.no_grad():
-        y_pred = model(x_test).squeeze()
+        y_pred = model(x_test)[:, 0]
         loss = loss_fn(y_pred, y_test)
         print(f'MSE при тестировании: {loss.item():.4f}')
         print(f'МAE при тестировании: {nn.L1Loss()(y_pred, y_test).item():.4f}')

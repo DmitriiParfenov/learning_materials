@@ -16,7 +16,7 @@ class DataCarLoader:
     @staticmethod
     def random_split(
             df: pd.DataFrame,
-            test_size: float = 0.8,
+            test_size: float = 0.2,
             shuffle: bool = True,
             random_state: int = 1
     ) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -38,14 +38,14 @@ class DataCarLoader:
         return df_train_norm, df_test_norm
 
     @staticmethod
-    def one_hot_encoding(df: pd.DataFrame, columns: list[str]) -> torch.Tensor:
+    def one_hot_encoding(df: pd.DataFrame, columns: list[str], categories_map: dict[str, int]) -> torch.Tensor:
         tensors = []
         for column in columns:
             unique_values = df[column].unique()
             encoded_values = {value: index for index, value in enumerate(unique_values)}
             new_column = f'{column}_encoded'
             df[new_column] = df[column].map(encoded_values)
-            tensors.append(one_hot(torch.from_numpy(df[new_column].to_numpy(int)), num_classes=len(unique_values)))
+            tensors.append(one_hot(torch.from_numpy(df[new_column].to_numpy(int)), num_classes=categories_map[column]))
         return torch.concat(tensors, 1)
 
     @staticmethod
@@ -72,11 +72,12 @@ class DataCarLoader:
             self, name: str,
             numeric_columns: list[str],
             categorical_columns: list[str],
-            test_size: float = 0.8,
+            test_size: float = 0.2,
             shuffle: bool = True,
-            random_state: int = 200
+            random_state: int = 1
     ):
         df = self.load_data(name)
+        categories_map = {column: len(df[column].unique()) for column in categorical_columns}
         df_train, df_test = self.random_split(df, test_size, shuffle, random_state)
         df_train_norm, df_test_norm = self.standardize_numeric_data(df_train, df_test, numeric_columns)
 
@@ -90,8 +91,8 @@ class DataCarLoader:
             torch.from_numpy(df_test_norm[numeric_columns].to_numpy(dtype=float))
         )
         x_train_cat, x_test_cat = (
-            self.one_hot_encoding(df_train, categorical_columns),
-            self.one_hot_encoding(df_test, categorical_columns)
+            self.one_hot_encoding(df_train, categorical_columns, categories_map),
+            self.one_hot_encoding(df_test, categorical_columns, categories_map)
         )
         y_train, y_test = (
             torch.from_numpy(df_train['class'].to_numpy(float)).float(),
