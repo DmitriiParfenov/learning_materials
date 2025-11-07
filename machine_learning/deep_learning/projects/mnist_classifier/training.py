@@ -28,9 +28,8 @@ def train(learning_rate: float = 0.001, epochs: int = 20, batch_size: int = 64):
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()
-            probas = torch.softmax(y_pred, dim=1)  # вероятности принадлежности к классам.
             losses[epoch] += loss.item() * y_mini.size(0)
-            is_correct = (torch.argmax(probas, dim=1) == y_mini).float()
+            is_correct = (torch.argmax(y_pred, dim=1) == y_mini).float()
             accuracies[epoch] += is_correct.sum().item()
         losses[epoch] /= len(dataloader.dataset)
         accuracies[epoch] /= len(dataloader.dataset)
