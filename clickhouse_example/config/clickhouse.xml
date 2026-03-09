@@ -1,0 +1,13 @@
+<clickhouse>
+    <listen_host>localhost</listen_host>
+    <logger>
+        <level>information</level>
+        <log>/var/log/clickhouse-server/clickhouse.log</log>
+        <errorlog>/var/log/clickhouse-server/error.log</errorlog>
+        <size>1000M</size>
+        <count>10</count>
+    </logger>
+    <max_server_memory_usage_to_ram_ratio>0.9</max_server_memory_usage_to_ram_ratio>
+    <background_pool_size>16</background_pool_size>
+    <background_merges_mutations_concurrency_ratio>2</background_merges_mutations_concurrency_ratio>
+</clickhouse>

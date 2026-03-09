@@ -1,0 +1,13 @@
+<clickhouse>
+    <users>
+        <plastilin_user>
+            <password_sha256_hex>2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b</password_sha256_hex>
+            <networks>
+                <ip>::/0</ip>
+            </networks>
+            <profile>default</profile>
+            <quota>default</quota>
+        </plastilin_user>
+        <default remove="true"/>
+    </users>
+</clickhouse>

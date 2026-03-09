@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  clickhouse_db:
+    image: clickhouse/clickhouse-server:25.11-alpine
+    container_name: clickhouse_db
+    hostname: clickhouse_db
+    restart: always
+    ports:
+      - "8123:8123"
+      - "9123:9123"
+    volumes:
+      - ch_data:/var/lib/clickhouse  # данные в БД
+      - ch_logs:/var/log/clickhouse
+      - ./config/clickhouse.xml:/etc/clickhouse-server/config.d/custom.xml:ro
+      - ./config/users.xml:/etc/clickhouse-server/users.d/users.xml:ro
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    networks:
+      - redis_test_plastilin_plant
+
+volumes:
+  ch_data:
+  ch_logs:
+
+networks:
+   redis_test_plastilin_plant:
+     external: true
