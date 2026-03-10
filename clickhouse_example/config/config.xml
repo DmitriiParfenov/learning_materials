@@ -1,0 +1,30 @@
+<storage_configuration>
+    <disks>
+        <default>
+            <type>local</type>
+            <path>/var/lib/clickhouse/</path>
+        </default>
+
+        <s3_storage>
+            <type>s3</type>
+            <endpoint>http://minio:9000</endpoint>
+            <bucket>clickhouse</bucket>
+            <access_key_id>minioadmin</access_key_id>
+            <secret_access_key>minioadmin</secret_access_key>
+        </s3_storage>
+    </disks>
+
+    <policies>
+        <custom_storage_policy>
+            <volumes>
+                <default>
+                    <disk>default</disk>
+                </default>
+                <s3_storage>
+                    <disk>s3_storage</disk>
+                </s3_storage>
+            </volumes>
+            <move_factor>0.2</move_factor>
+        </custom_storage_policy>
+    </policies>
+</storage_configuration>
