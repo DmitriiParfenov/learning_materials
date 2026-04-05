@@ -1,0 +1,8 @@
+apache-airflow-providers-amazon==9.22.0  # для взаимодействия с S3
+apache-airflow-providers-postgres==6.6.0  # для взаимодействия с postgres
+mlflow==3.10.1
+sqlalchemy==2.0.48
+boto3==1.42.65
+pandas==2.2.3
+psycopg2-binary==2.9.11
+scikit-learn==1.8.0
