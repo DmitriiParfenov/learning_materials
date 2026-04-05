@@ -4,3 +4,4 @@ __pychache__/
 .coverage
 .env
 **/mnist/
+logs
