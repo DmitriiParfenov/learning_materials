@@ -1,0 +1,36 @@
+version: "3.9"
+
+x-common-variables: &variables
+  MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+  MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+
+services:
+  image: minio/minio:latest
+  container_name: minio_${CI_ENVIRONMENT_NAME}
+  command: server /data --console-address ":9001"
+  ports:
+    - ${MA_PORT}:9000  # S3 API
+    - ${MW_PORT}:9001  # Web Console
+  volumes:
+    - minio_data_volume:/data
+  environment:
+    <<: *variables
+  healthcheck:
+    test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
+    interval: 30s
+    timeout: 20s
+    retries: 3
+
+
+  minio-init:
+    image: minio/minio:latest
+    container_name: minio_${CI_ENVIRONMENT_NAME}
+    depends_on:
+      minio:
+        condition: service_healthy
+    volumes:
+      - ./policy:/policy
+      - ./scripts:/scripts
+    entrypoint: [ "/bin/bash", "/scripts/init.sh" ]
+    environment:
+      <<: *variables
