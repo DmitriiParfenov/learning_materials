@@ -34,6 +34,9 @@ datasets = "^4.4.1"
 apache-airflow = {version = "3.1.8", extras = ["celery"]}
 apache-airflow-providers-amazon = "9.22.0"
 apache-airflow-providers-postgres = "6.6.0"
+mlflow = "^3.11.1"
+optuna = "^4.8.0"
+xgboost = "^3.2.0"
 
 
 [tool.poetry.group.dev.dependencies]
