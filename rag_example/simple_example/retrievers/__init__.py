@@ -1,1 +1,1 @@
-from vectorized_db import CORPUS
+from .vectorized_db import CORPUS
