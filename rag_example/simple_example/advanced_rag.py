@@ -15,4 +15,4 @@ def main(prompt: str) -> str:
 
 
 if __name__ == '__main__':
-    print(main("режим работы"))
+    print(main("А ты сможешь сказать режим работы фаст фуда в СПБ?"))
