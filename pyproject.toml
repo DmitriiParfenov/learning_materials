@@ -37,6 +37,9 @@ apache-airflow-providers-postgres = "6.6.0"
 mlflow = "^3.11.1"
 optuna = "^4.8.0"
 xgboost = "^3.2.0"
+openai = "^2.33.0"
+groq = "^1.2.0"
+spacy = "^3.8.14"
 
 
 [tool.poetry.group.dev.dependencies]
